@@ -25,7 +25,8 @@ class FriendsList extends React.Component {
       marginRight: 100,
       marginTop: 50,
       paddingLeft: 20,  //inside <div>
-      paddingTop: 5
+      paddingTop: 5,
+      fontFamily: "Dosis"
     }
     const myStyle2 = {
       color: "indigo",
