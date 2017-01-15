@@ -41,15 +41,15 @@ class FriendsList extends React.Component {
       <div style={myStyle1}>
         <h1 style={myStyle2}>{this.state.note}</h1>
         <h2 style={myStyle3}>Name: &nbsp;&nbsp;{this.state.name}</h2>
-        <AddFriend addNew={this.addFriend.bind(this)} />
-        <ShowList names={this.state.friends} />
+        <AddFriend1 addNew={this.addFriend.bind(this)} />
+        <ShowList1 names={this.state.friends} />
       </div>
 
       <div style={myStyle1}>
         <h1 style={myStyle2}>{this.state.note}</h1>
         <h2 style={myStyle3}>Name: &nbsp;&nbsp;{this.state.name}</h2>
-        <AddFriend addNew={this.addFriend.bind(this)} />
-        <ShowList names={this.state.friends} />
+        <AddFriend2 addNew={this.addFriend.bind(this)} />
+        <ShowList2 names={this.state.friends} />
       </div>
     </div>
     );
@@ -73,7 +73,7 @@ FriendsList.propTypes = {
   friends: React.PropTypes.array.isRequired
 }
 
-class AddFriend extends React.Component {
+class AddFriend1 extends React.Component {
   updateNewFriend(e) {
     this.setState({
       newFriend: e.target.value
@@ -94,10 +94,38 @@ class AddFriend extends React.Component {
     );
   }
 }
-AddFriend.defaultProps = {
+AddFriend1.defaultProps = {
   newFriend: ''
 }
-AddFriend.propTypes = {
+AddFriend1.propTypes = {
+  addNew: React.PropTypes.func.isRequired
+}
+
+class AddFriend2 extends React.Component {
+  updateNewFriend(e) {
+    this.setState({
+      newFriend: e.target.value
+    });
+  }
+  handleAddFriend() {
+    this.props.addNew(this.state.newFriend);
+    this.setState({
+      newFriend: ''
+    })
+  }
+  render() {
+    return (
+      <div>
+        <input type="text" onChange={this.updateNewFriend.bind(this)} placeholder="Type new friend here" />
+        <button onClick={this.handleAddFriend.bind(this)}>Add Friend</button>
+      </div>
+    );
+  }
+}
+AddFriend2.defaultProps = {
+  newFriend: ''
+}
+AddFriend2.propTypes = {
   addNew: React.PropTypes.func.isRequired
 }
 
@@ -114,7 +142,7 @@ AddFriend.propTypes = {
 //     );
 //   }
 // }
-class ShowList extends React.Component {
+class ShowList1 extends React.Component {
   render() {
     return (
       <div>
@@ -128,10 +156,31 @@ class ShowList extends React.Component {
     );
   }
 }
-ShowList.defaultProps = {
+ShowList1.defaultProps = {
   names: []
 }
-ShowList.propTypes = {
+ShowList1.propTypes = {
+  names: React.PropTypes.array.isRequired
+}
+
+class ShowList2 extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>Friends</h2>
+        <ul>
+        {this.props.names.map(item => 
+          <li key={item}>{item}</li>
+        )}
+        </ul>
+      </div>
+    );
+  }
+}
+ShowList2.defaultProps = {
+  names: []
+}
+ShowList2.propTypes = {
   names: React.PropTypes.array.isRequired
 }
 
