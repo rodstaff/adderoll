@@ -7,9 +7,12 @@ class FriendsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      note: this.props.note,
-      name: this.props.name[0]+ " " + this.props.name[1],
-      friends: this.props.friends
+      note1: this.props.note1,
+      note2: this.props.note2,
+      name1: this.props.name1[0]+ " " + this.props.name1[1],
+      name2: this.props.name2[0]+ " " + this.props.name2[1],
+      friends1: this.props.friends1,
+      friends2: this.props.friends2
     }
   }
   addFriend(friend) {
@@ -39,15 +42,15 @@ class FriendsList extends React.Component {
     return (
     <div>
       <div style={myStyle1}>
-        <h1 style={myStyle2}>{this.state.note}</h1>
-        <h2 style={myStyle3}>Name: &nbsp;&nbsp;{this.state.name}</h2>
+        <h1 style={myStyle2}>{this.state.note1}</h1>
+        <h2 style={myStyle3}>Name: &nbsp;&nbsp;{this.state.name1}</h2>
         <AddFriend1 addNew={this.addFriend.bind(this)} />
         <ShowList1 names={this.state.friends} />
       </div>
 
       <div style={myStyle1}>
-        <h1 style={myStyle2}>{this.state.note}</h1>
-        <h2 style={myStyle3}>Name: &nbsp;&nbsp;{this.state.name}</h2>
+        <h1 style={myStyle2}>{this.state.note2}</h1>
+        <h2 style={myStyle3}>Name: &nbsp;&nbsp;{this.state.name2}</h2>
         <AddFriend2 addNew={this.addFriend.bind(this)} />
         <ShowList2 names={this.state.friends} />
       </div>
@@ -56,21 +59,34 @@ class FriendsList extends React.Component {
   }
 }
 FriendsList.defaultProps = {
-  note: "Creating an interactive App in ReactJS.",
-  name: ['Isaac', 'Newton'],
-  friends: [
+  note1: "Creating an interactive App1 in ReactJS.",
+  note2: "Creating an interactive App2 in ReactJS.",
+  name1: ['Isaac', 'Newton'],
+  name2: ['Albert', 'Einstein'],
+  friends1: [
     'Renee Descartes',
     'Edmund Halley',
     'Robert Hooke',
     'Gottfried von Leibniz',
     'Anonymous Friend',
     'Big Fan'
+  ],
+  friends2: [
+    'Tom Sawyer',
+    'Huck Fin',
+    'Buck Rogers',
+    'Peter Pan',
+    'Kermit the Frog',
+    'Miss Piggy'
   ]
 }
 FriendsList.propTypes = {
-  note: React.PropTypes.string,
-  name: React.PropTypes.array.isRequired,
-  friends: React.PropTypes.array.isRequired
+  note1: React.PropTypes.string,
+  note2: React.PropTypes.string,
+  name1: React.PropTypes.array.isRequired,
+  name2: React.PropTypes.array.isRequired,
+  friends1: React.PropTypes.array.isRequired,
+  friends2: React.PropTypes.array.isRequired
 }
 
 class AddFriend1 extends React.Component {
