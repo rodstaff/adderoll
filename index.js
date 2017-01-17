@@ -45,14 +45,14 @@ class FriendsList extends React.Component {
         <h1 style={myStyle2}>{this.state.note1}</h1>
         <h2 style={myStyle3}>Name: &nbsp;&nbsp;{this.state.name1}</h2>
         <AddFriend1 addNew={this.addFriend.bind(this)} />
-        <ShowList1 names={this.state.friends} />
+        <ShowList1 names={this.state.friends1} />
       </div>
 
       <div style={myStyle1}>
         <h1 style={myStyle2}>{this.state.note2}</h1>
         <h2 style={myStyle3}>Name: &nbsp;&nbsp;{this.state.name2}</h2>
         <AddFriend2 addNew={this.addFriend.bind(this)} />
-        <ShowList2 names={this.state.friends} />
+        <ShowList2 names={this.state.friends2} />
       </div>
     </div>
     );
