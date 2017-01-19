@@ -17,7 +17,8 @@ class FriendsList extends React.Component {
   }
   addFriend(friend) {
     this.setState({
-      friends: this.state.friends.concat([friend])
+      friends1: this.state.friends1.concat([friend]),
+      friends2: this.state.friends2.concat([friend])
     });
   }
   render() {
@@ -44,15 +45,15 @@ class FriendsList extends React.Component {
       <div style={myStyle1}>
         <h1 style={myStyle2}>{this.state.note1}</h1>
         <h2 style={myStyle3}>Name: &nbsp;&nbsp;{this.state.name1}</h2>
-        <AddFriend1 addNew={this.addFriend.bind(this)} />
-        <ShowList1 names={this.state.friends1} />
+        <AddFriend1 addNew1={this.addFriend.bind(this)} />
+        <ShowList1 names1={this.state.friends1} />
       </div>
 
       <div style={myStyle1}>
         <h1 style={myStyle2}>{this.state.note2}</h1>
         <h2 style={myStyle3}>Name: &nbsp;&nbsp;{this.state.name2}</h2>
-        <AddFriend2 addNew={this.addFriend.bind(this)} />
-        <ShowList2 names={this.state.friends2} />
+        <AddFriend2 addNew2={this.addFriend.bind(this)} />
+        <ShowList2 names2={this.state.friends2} />
       </div>
     </div>
     );
@@ -92,13 +93,13 @@ FriendsList.propTypes = {
 class AddFriend1 extends React.Component {
   updateNewFriend(e) {
     this.setState({
-      newFriend: e.target.value
+      newFriend1: e.target.value
     });
   }
   handleAddFriend() {
-    this.props.addNew(this.state.newFriend);
+    this.props.addNew1(this.state.newFriend1);
     this.setState({
-      newFriend: ''
+      newFriend1: ''
     })
   }
   render() {
@@ -111,22 +112,22 @@ class AddFriend1 extends React.Component {
   }
 }
 AddFriend1.defaultProps = {
-  newFriend: ''
+  newFriend1: ''
 }
 AddFriend1.propTypes = {
-  addNew: React.PropTypes.func.isRequired
+  addNew1: React.PropTypes.func.isRequired
 }
 
 class AddFriend2 extends React.Component {
   updateNewFriend(e) {
     this.setState({
-      newFriend: e.target.value
+      newFriend2: e.target.value
     });
   }
   handleAddFriend() {
-    this.props.addNew(this.state.newFriend);
+    this.props.addNew2(this.state.newFriend2);
     this.setState({
-      newFriend: ''
+      newFriend2: ''
     })
   }
   render() {
@@ -139,10 +140,10 @@ class AddFriend2 extends React.Component {
   }
 }
 AddFriend2.defaultProps = {
-  newFriend: ''
+  newFriend2: ''
 }
 AddFriend2.propTypes = {
-  addNew: React.PropTypes.func.isRequired
+  addNew2: React.PropTypes.func.isRequired
 }
 
 // class ShowList extends React.Component {
@@ -164,7 +165,7 @@ class ShowList1 extends React.Component {
       <div>
         <h2>Friends</h2>
         <ul>
-        {this.props.names.map(item => 
+        {this.props.names1.map(item => 
           <li key={item}>{item}</li>
         )}
         </ul>
@@ -173,10 +174,10 @@ class ShowList1 extends React.Component {
   }
 }
 ShowList1.defaultProps = {
-  names: []
+  names1: []
 }
 ShowList1.propTypes = {
-  names: React.PropTypes.array.isRequired
+  names1: React.PropTypes.array.isRequired
 }
 
 class ShowList2 extends React.Component {
@@ -185,7 +186,7 @@ class ShowList2 extends React.Component {
       <div>
         <h2>Friends</h2>
         <ul>
-        {this.props.names.map(item => 
+        {this.props.names2.map(item => 
           <li key={item}>{item}</li>
         )}
         </ul>
@@ -194,10 +195,10 @@ class ShowList2 extends React.Component {
   }
 }
 ShowList2.defaultProps = {
-  names: []
+  names2: []
 }
 ShowList2.propTypes = {
-  names: React.PropTypes.array.isRequired
+  names2: React.PropTypes.array.isRequired
 }
 
 ReactDOM.render(
